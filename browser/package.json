@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "autoprefixer": "^9.6.1",
     "del": "^4.1.1",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-eslint": "^6.0.0",

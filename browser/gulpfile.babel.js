@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 
+const babel=require('gulp-babel');
+
 var jsUglify = require('gulp-uglify');
 var cssUglify = require('gulp-minify-css');
 var htmlUglify = require('gulp-minify-html');
@@ -38,19 +40,19 @@ const distUrl = './dist/';
 
 var pathConfig = {
   js: {
-    src: baseUrl + 'js/*.js',
+    src: baseUrl + 'js/**/*.js',
     dest: distUrl + 'js'
   },
   css: {
-    src: baseUrl + 'css/*.css',
+    src: baseUrl + 'css/**/*.css',
     dest: distUrl + 'css'
   },
   less: {
-    src: baseUrl + 'less/*.less',
+    src: baseUrl + 'less/**/*.less',
     dest: distUrl + 'css'
   },
   sass: {
-    src: baseUrl + 'sass/*.sass',
+    src: baseUrl + 'sass/**/*.sass',
     dest: distUrl + 'css'
   },
   html: {
@@ -79,6 +81,9 @@ var task_cssUglify = function (cb) {
 
 var task_jsUglify = function (cb) {
   gulp.src(pathConfig.js.src)
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
     .pipe(jsUglify())
     .pipe(gulp.dest(pathConfig.js.dest))
     .pipe(livereload());
